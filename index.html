@@ -54,14 +54,30 @@
     <ul id="lista-notas"></ul>
   </section>
 
-  <!-- AGENDA -->
-  <section class="agenda">
-    <h2>Agenda</h2>
-    <input type="text" id="tarea" placeholder="Tarea o examen">
-    <input type="date" id="fecha">
-    <button onclick="agregarTarea()">Agregar</button>
-    <ul id="lista-tareas"></ul>
-  </section>
+  // AGENDA (AGREGAR Y ELIMINAR)
+function agregarTarea() {
+  const tarea = document.getElementById("tarea").value;
+  const fecha = document.getElementById("fecha").value;
+
+  if (tarea === "" || fecha === "") {
+    alert("Escribe la tarea y la fecha");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.innerHTML = `
+    ${tarea} - ${fecha}
+    <button onclick="eliminarTarea(this)">❌</button>
+  `;
+
+  document.getElementById("lista-tareas").appendChild(li);
+  document.getElementById("tarea").value = "";
+  document.getElementById("fecha").value = "";
+}
+
+function eliminarTarea(boton) {
+  boton.parentElement.remove();
+}
 
   <!-- ESTADÍSTICAS -->
   <section class="estadisticas">
