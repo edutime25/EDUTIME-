@@ -70,6 +70,35 @@
   </section>
 
   <script>
+
+    // USUARIO Y AVATAR
+  let nombre = localStorage.getItem("nombreUsuario");
+  let avatar = localStorage.getItem("avatarUsuario");
+
+  if (!nombre) {
+    nombre = prompt("Escribe tu nombre:");
+
+    let opcion = prompt(
+      "Elige tu avatar:\n1 Azul\n2 Verde\n3 Morado\n4 Rojo\n5 Amarillo"
+    );
+
+    let avatares = {
+      1: "https://cdn-icons-png.flaticon.com/512/921/921071.png",
+      2: "https://cdn-icons-png.flaticon.com/512/921/921089.png",
+      3: "https://cdn-icons-png.flaticon.com/512/921/921061.png",
+      4: "https://cdn-icons-png.flaticon.com/512/921/921079.png",
+      5: "https://cdn-icons-png.flaticon.com/512/921/921098.png"
+    };
+
+    avatar = avatares[opcion];
+
+    localStorage.setItem("nombreUsuario", nombre);
+    localStorage.setItem("avatarUsuario", avatar);
+  }
+
+  document.getElementById("nombre-usuario").textContent = nombre;
+  document.getElementById("avatar-usuario").src = avatar;
+   
     // CONSEJO DEL DÍA
     const consejos = [
       "Organiza tu tiempo antes de empezar.",
