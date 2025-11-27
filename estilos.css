@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #E9F4FF;
+  color: #073763;
+  text-align: center;
+}
+
+/* HEADER */
+.header {
+  background: #0B3D91;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #8FD6FF;
+}
+
+/* TÍTULO */
+.titulo {
+  padding: 20px;
+}
+
+.titulo h1 {
+  font-size: 42px;
+  color: #0B3D91;
+  margin-bottom: 10px;
+}
+
+.titulo p {
+  font-size: 18px;
+  color: #1666C1;
+}
+
+/* RACHA */
+.racha {
+  background: #4FA6FF;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  margin: 10px 20px;
+  border-radius: 12px;
+}
+
+/* CONSEJO */
+.consejo {
+  background: #8FD6FF;
+  padding: 12px;
+  margin: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* MODO ENFOQUE */
+.modo-enfoque {
+  margin: 20px;
+}
+
+.modo-enfoque button {
+  background: #1666C1;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.enfoque {
+  background: white;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.oculto {
+  display: none;
+}
+
+/* NOTAS Y AGENDA */
+.notas, .agenda, .estadisticas {
+  background: white;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+input, button {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #4FA6FF;
+  margin: 5px;
+}
+
+button {
+  background: #0B3D91;
+  color: white;
+  border: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #E9F4FF;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+}
