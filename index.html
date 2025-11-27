@@ -13,6 +13,8 @@
   <div class="perfil">
     <img id="avatar-usuario" class="avatar">
     <span id="nombre-usuario"></span>
+    <br>
+    <button onclick="cambiarPerfil()">Cambiar perfil</button>
   </div>
   </header>
 
@@ -173,6 +175,11 @@ function agregarTarea() {
 function eliminarTarea(boton) {
   boton.parentElement.remove();
 }
+  function cambiarPerfil() {
+  localStorage.removeItem("nombreUsuario");
+  localStorage.removeItem("avatarUsuario");
+  location.reload();
+                              }
   </script>
 
 </body>
