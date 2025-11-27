@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>EduTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="perfil">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="avatar">
+      <span id="nombre-usuario">Usuario</span>
+    </div>
+  </header>
+
+  <!-- TITULO -->
+  <section class="titulo">
+    <h1>EduTime</h1>
+    <p>Convierte tu tiempo en conocimiento</p>
+  </section>
+
+  <!-- RACHA -->
+  <section class="racha">
+    🔥 Racha de estudio: <span id="racha">0</span> días
+  </section>
+
+  <!-- CONSEJO DEL DÍA -->
+  <section class="consejo">
+    💡 Consejo del día: <span id="texto-consejo">Organiza tu tiempo antes de empezar.</span>
+  </section>
+
+  <!-- MODO ENFOQUE -->
+  <section class="modo-enfoque">
+    <button onclick="abrirEnfoque()">Entrar al Modo Enfoque</button>
+    <div id="enfoque" class="enfoque oculto">
+      <h2>Modo Enfoque</h2>
+      <input type="number" id="minutos" placeholder="Minutos de estudio">
+      <br><br>
+      <button onclick="iniciar()">Iniciar</button>
+      <button onclick="pausar()">Pausar</button>
+      <button onclick="reiniciar()">Reiniciar</button>
+      <h3 id="tiempo">00:00</h3>
+    </div>
+  </section>
+
+  <!-- NOTAS -->
+  <section class="notas">
+    <h2>Notas</h2>
+    <input type="text" id="nota-input" placeholder="Escribe una nota">
+    <button onclick="agregarNota()">Agregar</button>
+    <ul id="lista-notas"></ul>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="agenda">
+    <h2>Agenda</h2>
+    <input type="text" id="tarea" placeholder="Tarea o examen">
+    <input type="date" id="fecha">
+    <button onclick="agregarTarea()">Agregar</button>
+    <ul id="lista-tareas"></ul>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="estadisticas">
+    <h2>Estadísticas</h2>
+    <p>Tiempo total estudiado: <span id="total">0</span> minutos</p>
+  </section>
+
+  <script>
+    // CONSEJO DEL DÍA
+    const consejos = [
+      "Organiza tu tiempo antes de empezar.",
+      "Estudia en bloques cortos.",
+      "Descansa entre sesiones.",
+      "Apaga distracciones.",
+      "Repasa lo aprendido."
+    ];
+    document.getElementById("texto-consejo").textContent =
+      consejos[Math.floor(Math.random() * consejos.length)];
+
+    // MODO ENFOQUE
+    let tiempo = 0;
+    let intervalo;
+
+    function abrirEnfoque() {
+      document.getElementById("enfoque").classList.toggle("oculto");
+    }
+
+    function iniciar() {
+      tiempo = document.getElementById("minutos").value * 60;
+      intervalo = setInterval(() => {
+        if (tiempo > 0) {
+          tiempo--;
+          let min = Math.floor(tiempo / 60);
+          let seg = tiempo % 60;
+          document.getElementById("tiempo").textContent =
+            `${min}:${seg < 10 ? "0" : ""}${seg}`;
+        }
+      }, 1000);
+    }
+
+    function pausar() {
+      clearInterval(intervalo);
+    }
+
+    function reiniciar() {
+      clearInterval(intervalo);
+      document.getElementById("tiempo").textContent = "00:00";
+    }
+
+    // NOTAS
+    function agregarNota() {
+      const texto = document.getElementById("nota-input").value;
+      const li = document.createElement("li");
+      li.textContent = texto;
+      document.getElementById("lista-notas").appendChild(li);
+      document.getElementById("nota-input").value = "";
+    }
+
+    // AGENDA
+    function agregarTarea() {
+      const tarea = document.getElementById("tarea").value;
+      const fecha = document.getElementById("fecha").value;
+      const li = document.createElement("li");
+      li.textContent = tarea + " - " + fecha;
+      document.getElementById("lista-tareas").appendChild(li);
+      document.getElementById("tarea").value = "";
+      document.getElementById("fecha").value = "";
+    }
+  </script>
+
+</body>
+</html>
